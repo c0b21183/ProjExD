@@ -7,7 +7,7 @@ chars = 2
 
 def main():
     st = datetime.datetime.now()
-    for _ in range(kaisu):
+    for i in range(kaisu):
         kotae=mondai()
         f = ans(kotae)
         if f == 1:
@@ -30,6 +30,18 @@ def ans(kotae):
     if num != kaisu:
         print("不正解")
         return 0 
+    else:
+        print("正解です")
+        for i in range(kaisu)
+            c = input(f"{i+1}つ目の文字を入力")
+            if c not in kotae:
+                print("不正解")
+        
+                return 0 
+            kotae.remove(c)
+        print("正解　ゲーム終了")
+        return 1
+            
     
  if __name__ ==  "__main__"
     main()
