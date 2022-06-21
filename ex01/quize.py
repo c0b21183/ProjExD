@@ -1,8 +1,8 @@
 from random import randint
 def main():
     print("問題:")
-    a = shutudai()
-    kaitou(a)
+    a = shutsudai()
+    kaitou(seikai)
 
 def shutudai():
     q = {}
@@ -15,7 +15,7 @@ def shutudai():
 
 def kaitou(a):
     kai = input("答え:")
-    if kai in a:
+    if kai in seikai:
         print("正解!")
     else:
         print("不正解")
