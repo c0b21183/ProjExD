@@ -22,13 +22,14 @@ def button_click(event):
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("電卓")
+    #root.geometry("300x500")
 
     entry= tk.Entry(root,justify="right",width=10,font=("Times New Roman",40))
     entry.grid(row=0,column=0,columnspan=3)
 
 
     r, c= 1, 0
-    for i,num in enumerate([9, 8, 7, 6, 5, 4, 3, 2, 1, 0, "+", "="]):
+    for i,num in enumerate([9,8,7,6,5,4,3,2,1,0,"+","="]):
         btn = tk.Button(root,
                         text=f"{num}",
                         width=4, 
