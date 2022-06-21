@@ -2,6 +2,10 @@ import tkinter as tk
 import tkinter.messagebox as tkm
 
 
+def C(event):
+    if num == "C":
+        entry.delete(0,tk.END)
+
 def button_click(event):
     btn=event.widget
     num=btn["text"]
@@ -30,6 +34,7 @@ if __name__ == "__main__":
                         text=f"{num}",
                         width=4, 
                         height=2,
+                        bg="#00ffff",
                         font=("Times New Roman",30)
                         
                     )
@@ -41,5 +46,8 @@ if __name__ == "__main__":
             r += 1
             c = 0
 
+    button_clear=tk.Button(root,text="C",height=2,width=4,font=("Times New Roman",30))
+    button_clear.grid(row=1,column=2)
+    button_clear.bind("<1>",C)
     root.mainloop()
     
