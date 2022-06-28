@@ -15,7 +15,7 @@ yuka = 0
 def main_proc():
     global cx, cy, yuka
     if key == "Up" and maze[cy-1][cx] == 0:
-        cy = cy - 1
+        cy +=  1
     if key == "Down" and maze[cy+1][cx] == 0:
         cy = cy + 1
     if key == "Left" and maze[cy][cx-1] == 0:
@@ -51,9 +51,7 @@ if __name__ == "__main__":
        [1,0,0,0,1,0,1,0,0,1,0,0,1,0,0,0,1],
        [1,0,0,1,0,0,0,1,0,1,0,0,1,0,0,0,1],
        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-
-    ]
-       
+       ] 
 for y in range(9):
     for x in range(17):
         if maze[y][x] == 1:
