@@ -1,52 +1,65 @@
-import tkinter as tk
-import maze_maker as mm
+import tkinter
+import tkinter.messagebox
 
-def key_down(event):
-    global key 
-    key = event.keysym
-    #print(f"{key}")
-
-def key_up(event):
+key = ""
+def key_down(e):
     global key
+    key = e.keysym
+def key_up(e):
+    global key 
     key = ""
 
+cx = 1
+cy = 1
+yuka = 0
 def main_proc():
-    global cx, cy, mx, my
-    delta = {
-        ""      :[0, 0],
-        "Up"    :[0, -1],
-        "Down"  :[0, +1],
-        "Left"  :[-1, 0],
-        "Right" :[+1, 0],
-             }
-    try:
-         if maze_bg[my+delta[key][1]][mx+delta[key][0]] == 0:
-            my, mx = my+delta[key][1], mx+delta[key][0]
-    except:
-        pass
-    
-    cx, cy = mx*100+50, my*100+50
-    canvas.coords("tori", cx, cy)
-    root.after(100, main_proc)
-
+    global cx, cy, yuka
+    if key == "Up" and maze[cy-1][cx] == 0:
+        cy = cy - 1
+    if key == "Down" and maze[cy+1][cx] == 0:
+        cy = cy + 1
+    if key == "Left" and maze[cy][cx-1] == 0:
+        cx = cx - 1
+    if key == "Right" and maze[cy][cx+1] == 0:
+        cx = cx + 1
+    if maze[cy][cx] == 0:
+       maze[cy][cx] == 2
+       yuka = yuka + 1
+       canvas.create_rectangle(cx*80, cy*80, cx*80+79, cy*80+79, fill="blue", width=0)
+       canvas.delete("MYCHR")
+       canvas.create_image(cx*80+40, cy*80+40, image=tori)
+       if yuka == 1000:
+        canvas.update()
+        tkinter.messagebox.showinfo("おめでとう！")
+       else:
+        root.after(100, main_proc)
 if __name__ == "__main__":
-    root = tk.Tk()
+    root = tkinter.Tk()
     root.title("迷えるこうかとん")
-
-    canvas = tk.Canvas(root, width=1500, height=900, bg="black")
-    canvas.pack()
-    maze_bg = mm.make_maze(15, 9)
-    mm.show_maze(canvas, maze_bg)
-    
-    tori = tk.PhotoImage(file="fig/3.png")
-    mx, my = 1, 1
-    cx, cy =mx*100+50, my*100+50
-    canvas.create_image(cx, cy, image=tori, tag="tori")
-
-    key = ""
     root.bind("<KeyPress>", key_down)
     root.bind("<KeyRelease>", key_up)
+    canvas = tkinter.Canvas(width = 1500, height = 900, bg = "White")
+    canvas.pack()
 
+    maze = [
+       [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+       [1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1],
+       [1,1,1,1,0,0,1,0,0,1,0,0,0,0,1,0,1],
+       [1,0,0,1,0,0,0,0,0,0,1,0,1,0,0,0,1],
+       [1,0,0,1,1,0,0,1,0,1,0,0,0,0,1,0,1],
+       [1,0,0,0,0,0,0,1,0,0,0,0,1,0,1,0,1],
+       [1,0,0,0,1,0,1,0,0,1,0,0,1,0,0,0,1],
+       [1,0,0,1,0,0,0,1,0,1,0,0,1,0,0,0,1],
+       [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 
-    main_proc()
-    root.mainloop()
+    ]
+       
+for y in range(9):
+    for x in range(17):
+        if maze[y][x] == 1:
+             canvas.create_rectangle(x*80, y*80, x*80+79, y*80+79, fill="gray", width = 0)
+tori = tkinter.PhotoImage(file="fig/1.png")
+canvas.create_image(cx*80+40, cy*80+40, image= tori)
+main_proc()
+root.mainloop()
+
