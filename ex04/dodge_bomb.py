@@ -60,7 +60,7 @@ def main():
             if key_states[pg.K_RIGHT] == True: kkimg_rct.centerx -= 2
 
         screen_sfc.blit(kkimg_sfc, kkimg_rct) 
-        yoko, tate = check_bound(kkimg_rct, screen_rct)
+        yoko, tate = check_bound(kkimg_rct, screen_rct) #追加機能
         vx3 *= yoko
         vy3 *= tate
 
@@ -73,7 +73,7 @@ def main():
         vx *= yoko
         vy *= tate
 
-        screen_sfc.blit(bmimg2_sfc, bmimg2_rct)
+        screen_sfc.blit(bmimg2_sfc, bmimg2_rct) #追加機能
         yoko, tate = check_bound(bmimg2_rct, screen_rct)
         vx2 *= yoko
         vy2 *= tate
