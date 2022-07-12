@@ -92,7 +92,7 @@ class Shot:                                                #追加機能ビー�
 
 def main():
     clock = pg.time.Clock()
-    scr = Screen("逃げろ！こうかとん", (1600,900), "fig/pg_bg.jpg")
+    scr = Screen("負けるな！こうかとん", (1600,900), "fig/pg_bg.jpg")
     kkt = Bird("fig/4.png", 2.0, (900,400))
     bkb = Bomb((255,0,0), 10, (+1, +1), scr)
     bkb2 = Bomb((0,0,255), 20, (+2, +2), scr) #追加機能爆弾
@@ -109,8 +109,8 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                  return
-            if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
-                beam == kkt.attack()
+        if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
+            beam == kkt.attack()
 
         kkt.update(scr)
         bkb.update(scr)
