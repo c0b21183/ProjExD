@@ -10,3 +10,7 @@
 - ブロックを一個を壊すごとにスコアが10点加点される
 - ゲームを自動的に開始できるようにした
 - 上記のものはできたが、現在のコードでは修正が必要
+### 参考サイト
+-https://daeudaeu.com/tkinter-breakout/
+-https://qiita.com/Yt330110713/items/ed6beb74c02515b35248
+-https://news.mynavi.jp/techplus/article/zeropython-10/
